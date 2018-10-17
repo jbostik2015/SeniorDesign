@@ -1,0 +1,243 @@
+\documentclass[12pt]{article}
+
+\input{defaultPream}
+
+%----------BEGIN SETUP----------
+
+\section{Setup}
+
+\qq We've elected to create the brand new system on one of Stefano's new
+computers. That way, the current system is left untouched, and we are able to
+play around freely. The current system is running Scientific Linux 5, so we are
+installing the latest Scientific Linux, SL7, on the new testing computer. 
+
+\qq SL7 has been cleanly installed, now to enable ssh. Turns out ssh is
+installed and turned on by default in SL7, but it is unreachable via the WiFi; I
+have to first ssh into NAS-1, then into the new computer.
+
+\subsection{ROOT Installation}
+
+\qq One of the most important pieces of software we're going to need is ROOT. I
+installed the latest CentOS7 binary from root.cern.ch, and unpacked it. The
+CentOS7 binary may be used on SL7 because they are both closely related. 
+
+\subsection{Installing Stefano's Image}
+
+\qq Stefano created a disk image for us before he left with DATE and SCRIBE
+preinstalled and ready to go! It's at {\tt
+  /nas1/cmsgem/software/srs_centos7_2.vdi}. Unfortunately, it's a {\tt vdi} file
+rather than an {\tt iso}, so some conversions need to be done. I'm performing
+everything on the MTS development machine.
+
+\qq First we need to install some packages: {\tt qemu} and {\tt tklpatch}.
+Since {\tt vdi} files are VirtualBox images, we need to download VirtualBox to
+get the conversion tools:
+
+\begin{itemize}
+  \item {\tt cd /etc/yum.repos.d}
+  \item {\tt wget
+      http://download.virtualbox.org/virtualbox/rpm/rhel/virtualbox.repo}
+  \item {\tt yum --enablerepo=epel install dkms}
+  \item {\tt yum install VirtualBox-5.1}
+\end{itemize}
+
+\qq Now that VirtualBox is installed, we can start converting! First, the {\tt
+  vdi} needs to be converted into a {\tt vmdk}, {\tt VBoxManage clonemedium
+  srs_centos7_2.vdi srs_centos7_2.vmdk --format VMDK}. Then, to a raw file, {\tt
+  gemu-img convert -f vmdk srs_centos7_2.vmdk -O raw srs_centos7_2.raw}. Next,
+the raw disk must be mounted as a loop device, but, since the image has multiple
+partitions, some extra steps must be performed. 
+
+\qq Since the image has partitions, it must be specially prepared for mounting,
+{\tt loopdev=\$(sudo losetup --show -f srs_centos7_2.raw)}. The the command was
+assigned to a variable, because its output will be used more than once. The tool
+{\tt kpartx} needs to be installed, {\tt sudo yum install kpartx}, and used to
+add mappings to the image's partitions, {\tt sudo kpartx -a \$loopdev}. Now, the
+image is ready to be mounted. Create a mount point, {\tt mkdir
+  srs_centos7_2.mount}, and mount the image {\tt sudo mount
+  /dev/mapper/\$(basename \$loopdev)p1 srs_centos7_2.mount}. The image should be
+visible from {\tt df -h}, and accessible via the route specified by {\tt df}.
+
+\qq Now a copy may be made of the root file system of the image. Create a
+directory for the file system, {\tt mkdir srs_centos7_2.rootfs}, then copy the
+contents of the mounted file system to the new directory, {\tt sudo rsync -a -t -r -S
+  -I srs_centos7_2.mount/ srs_centos7_2.rootfs}. Now that the mount point has
+been copied over, the original may be unmounted. 
+
+\qq Scratch that, we're just gonna put DATE on it. Stefano linked me to the CERN
+forum thread where he asked Brian Dorney for help to do exactly what we're
+trying to do. 
+
+\qq The first thing we need to do is follow the setup instructions from
+\url{http://linux.web.cern.ch/linux/centos7/docs/install.shtml}. The first thing
+that must be done is the configuration of the AFS client. Unfortunately, the
+necessary command, {\tt locmap} is not installed on our system, nor is it
+available from any of the installed repositories. I found it and its
+dependencies from the CERN's Linux website where all of its packages are hosted,
+\url{http://linuxsoft.cern.ch/cern/centos/7/cern/x86_64/Packages/}.
+
+\qq Once those RPMs are downloaded, they may be directly installed with {\tt
+  rpm}, but that command will not automatically install dependencies. To ease
+the installation process, a yum repository containing the RPMs can be created. A
+new file, {\tt /etc/yum.repos.d/localCERN.repo} was created, and in it were
+placed the lines: \\
+{\tt [localCERN] # the name of the new repository} \\
+{\tt baseurl = file://<full path to directory containing RPMs>} \\
+{\tt enabled=1 # enable the repo be default} \\
+{\tt gpgcheck=0 # disable package verification} \\
+While disabling package verification is generally bad practice, we do not have
+the keys necessary to properly install them. We also know where we got them
+from, and they are locally installed, so, in this particular case, it should not
+be a big deal.
+
+\qq Now that the repo has been created, {\tt locmap} can be installed, {\tt sudo
+  yum install locmap}. When the required command, {\tt sudo locmap --configure
+  afs}, is run, it complains that it cannot connect to {\tt xldap.cern.ch} and
+that the afs module is disabled. I've enabled the module with {\tt sudo locmap
+  --enable afs} and tried again to see what would happen, and, while it failed
+once again to connect to {\tt xldap.cern.ch}, it says that it configured
+everything!
+
+\qq The next step is to preconfigure the AFS client for CERN by configuring NTP,
+which must be enabled, {\tt sudo locmap --enable ntp}. Now, it can be configured
+with {\tt sudo locmap --configure ntp}. Next, the following modules must be
+enabled using the same command as above: cvmfs, eosclient, kerberos, lpadmin,
+nscd, sendmail, ssh, and sudo. A list of every available module and their
+statuses can be viewed with, {\tt sudo locmap --list}. Now, they must all be
+configured with, {\tt sudo locmap --configure all}. 
+
+\qq Well, turns out the AFS stuff doesn't work, probably because we couldn't
+connect to the server. Fortunately, we only needed AFS to get the CERN
+repositories, {\tt yum-alice-daq.cc7_64.repo} and {\tt
+  yum-alice-daq.slc6_64.repo}. I had grabbed {\tt yum-alice-daq.cc7_64.repo}
+from another computer, but the SLC6 repo was nowhere to be found. This problem
+was solved by creating the repo file myself by copying the CC7 file, and
+changing the URLs to point to where the SLC6 RPMs ought to be located. The
+contents of {\tt yum-alice-daq.cc7_64.repo} is: \\
+{\tt [main]} \\
+{\tt [alice-daq-cc7]} \\
+{\tt name=ALICE DAQ software and dependencies - CC7/64/} \\
+{\tt baseurl=http://cern.ch/alice-daq/yum-alice-daq.cc7_64/} \\
+{\tt
+  baseurl=https://yum:daqsoftrpm@alice-daq-yum.web.cern.ch/alice-daq-yum/cc7_64/}
+\\
+{\tt enabled=1} \\
+{\tt protect=1} \\
+{\tt gpgcheck=0} \\
+The contents of the newly created {\tt yum-alice-daq.slc6_64.repo} is: \\
+{\tt [main]} \\
+{\tt [alice-daq-slc6]} \\
+{\tt name=ALICE DAQ software and dependencies - slc6/64/} \\
+{\tt baseurl=http://cern.ch/alice-daq/yum-alice-daq.slc6_64/} \\
+{\tt
+  baseurl=https://yum:daqsoftrpm@alice-daq-yum.web.cern.ch/alice-daq-yum/slc6_64/}
+\\
+{\tt enabled=1} \\
+{\tt protect=1} \\
+{\tt gpgcheck=0} \\
+
+Running a quick {\tt sudo yum update} is helpful here, just double check to make
+sure you're not accidentally installing any SLC6 packages. 
+
+\qq Now to install a bunch of things from these repositories! The installation
+instructions from here,
+\url{https://alice-daq.web.cern.ch/products/date-installation-and-configuration}
+were followed. 
+
+\qq The first command {\tt rpm -e mysql-libs mysql mysql-devel
+  postfix} produced some errors, but they are excusable. They appeared because
+those packages simply are not installed on our machine; the {\tt postfix} one,
+however, is. While simply {\tt rpm -e postfix} could have been executed with
+equal affect, it is safe to include the other three packages in case they
+happened to have been mysteriously installed onto the system. 
+
+\qq The next command is {\tt rm -rf /var/lib/mysql/}, but that directory should
+not exist in the first place, since MySQL is not installed. Now, we must install
+a bunch of packages (including DATE!), {\tt sudo yum install BWidget
+  MySQL-shared MySQL-client MySQL-devel dim smi tcl-devel tk-devel curl-devel
+  libxml2-devel pciutils-devel mysqltcl xinetd ksh tcsh date}. With that
+completed, MySQL server must be installed, {\tt yum install
+  MySQL-server}. This time, a conflict with {\tt mariadb-libs} was encountered,
+but we can just erase this package, since we don't need it, {\tt yum erase
+  mariadb-libs}. 
+
+\qq The next step is to setup MySQL. First the service must be started, {\tt
+  service mysql start}. Since the root account must be setup first, and the
+temporary root password is stored in root's home directory, we must switch to
+root to complete setting up the initial account, {\tt sudo su}. The temporary
+password is viewed with {\tt cat /root/.mysql_secret}. Copy that password, then
+paste it when prompted after running, as root, {\tt mysqladmin -u root -h
+  localhost -p password}. 
+
+\qq Now that the root account has been created, the user accounts can be
+added. You may log out of root. First the {\tt DATE_SITE} environment variable
+must be cleared, {\tt unset DATE_SITE}, then the date setup script must be
+executed, {\tt . /date/setup.sh}. Afterwards, the MySQL initialization script
+must be executed to configure the new database, {\tt newMysql.sh}. While the
+settings may be changed to whatever best fits the situation, the defaults are
+sufficient.
+
+\qq Now that the MySQL database is initialized, it must be configured, for DATE,
+{\tt newDateSite.sh}. NOTE: To create the required {\tt /dateSite} directory, it
+will ask for the root password. When prompted, confirm that a minimal
+configuration is to be created; this is not the default setting. Also confirm
+that all detectors are to be added and that all trigger class masks ought to be
+added; these are not the default settings.
+
+\qq With the base DATE configuration complete, the local configuration can
+begin. These next few steps must be completed as root ({\tt sudo su}). The path
+of the DATE_SITE must be set, {\tt export DATE_SITE=/dateSite}, the setup script
+must be executed, {\tt . /date/setup.sh}, and the local configuration command
+must be run, {\tt dateLocalConfig -s}.
+
+\qq Running {\tt dateLocalConfig -s} will result in an error because, in
+CentOS7, {\tt iptables} has fallen away in favor of {\tt firewalld}. These
+instructions form StackOverflow,
+\url{https://stackoverflow.com/questions/24756240/how-can-i-use-iptables-on-centos-7}
+describe how to switch back from {\tt firewalld} to {\tt iptables} so that DATE,
+built for SLC6, will be happy.
+
+\qq First, {\tt firewalld} needs to be stopped,{\tt systemctl stop firewalld},
+and hidden away, {\tt systemctl mask firewalld}. Next, {\tt iptables} must be
+installed, {\tt yum install iptables-services}, and enabled, {\tt systemctl
+  enable iptables} followed by {\tt systemctl start iptables}. Running {\tt
+  dateLocalConfig -s} will, again, produce an error, but running it again
+immediately will work, somehow.
+
+\qq Next, the DIM (Distributed Information Management) name server must be
+launched (and must be launched after each boot; this will be automated), {\tt
+  /date/runControl/start_dim.sh &}. This returned a ``no process found'' error,
+but running it again seemed to work fine. This error comes about because of
+slightly different paths to {\tt do_start_dim.sh}, whose location can be found
+with {\tt locate do_start_dim.sh}.
+
+\qq The infoLoggerServer must also be started (these commands must be run after
+each boot; this will be automated):\\
+{\tt export DATE_SITE=/dateSite} \\
+{\tt . /date/setup.sh} \\
+{\tt /date/infoLogger/infoLoggerServer.sh start} \\
+
+\qq The DAQ ought to be ready to be launched:\\
+{\tt export DATE_SITE=/dateSite}\\
+{\tt cd /date} \\
+{\tt . ./setup.sh}\\
+{\tt infoBrowser}\\
+{\tt runControl/DAQCONTROL.sh}\\
+
+\qq Now, it's time to install AMORE as root ({\tt sudo su}), {\tt yum install
+  amore}. While all of the AMORE tools are installed, they are not part of the
+{\tt PATH} environment variable, so they cannot be run by basename on the normal
+prompt. Their install location can be found with {\tt locate amoreMysqlSetup},
+which will display the full path to one of the tools. The remainder of the tools
+are in the same directory. In our case, that directory is {\tt /opt/amore/bin/},
+so that is what we will add to the {\tt PATH} variable, {\tt
+  PATH=\$PATH:/opt/amore/bin}. Be sure to add {\tt export
+  PATH=\$PATH:/opt/amore/bin} to both the user's and root's {\tt
+  ~/.bash_profile}. Now all the AMORE tools are accessible by their
+basenames.
+
+\qq The next step is to set up the MySQL database for AMORE, {\tt amoreMysqlSetup}.
+The defaults are sufficient. Now the AMORE site itself needs to be created, {\tt
+  newAmoreSite}, and the defaults are fine. 
+
+%-----------END SETUP-----------
