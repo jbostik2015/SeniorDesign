@@ -1,0 +1,103 @@
+\documentclass[12pt]{article}
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{color}
+\pagenumbering{gobble}
+\usepackage{changepage}
+
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\hypersetup{
+	colorlinks,
+	citecolor=black,
+	filecolor=black,
+	linkcolor=black,
+	urlcolor=black
+}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\begin{document}
+\begin{titlepage}
+	
+
+\author{Josef Bostik\\
+	Eric Pereira\\
+	Ryan Wojtyla\\}
+\date{October 29\textsuperscript{th}, 2018}
+\title{Progress Evaluation 2}
+\maketitle
+\end{titlepage}
+\tableofcontents
+\newpage \pagenumbering{arabic}
+\section{HEP Senior Design}
+\begin{itemize}
+	\item Josef Bostik - \href{mailto:jbostik2015@my.fit.edu}{jbostik2015@my.fit.edu}
+	\item Eric Pereira - \href{mailto:epereira2015@my.fit.edu}{epereira2015@my.fit.edu }
+	\item Ryan Wojtyla - \href{mailto:rwojtyla2015@my.fit.edu}{rwojtyla2015@my.fit.edu}
+\end{itemize}
+
+\section{Faculty Sponsor}
+\tab Eraldo Ribeiro - \href{mailto:eribeiro@fit.edu}{eribeiro@fit.edu}
+\section{Client}
+\tab Marcus Hohlmann - \href{mailto:hohlmann@fit.edu}{hohlmann@fit.edu} \\ 
+\tab Head of the Florida Tech HEP group
+\section{Meeting with Faculty Sponsor}
+\section{Meeting with Client}
+\begin{itemize}
+  \item[] 01 October 2018
+  \item[] 08 October 2018
+  \item[] 15 October 2018
+  \item[] 22 October 2018
+\end{itemize}
+
+
+\section{Progress of current Milestone}
+\begin{adjustwidth}{-2cm}{}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+Task & Completion\% & Ryan & Eric & Josef & To do \\
+\hline
+Repair data collection of MTS & 100\% & 40\% & 40\% & 20\% & none \\
+\hline
+Install DATA and AMORE & 100\% & 40\% & 20\% & 40\% & Finish installing AMORE \\
+\hline
+ & 100\% & 25\% & 50\% & 25\% & none \\
+ \hline
+ & 100\% & 40\% & 30\% & 35\% & none \\
+ \hline
+  & 100\% & 25\% & 25\% & 50\% & none \\
+  \hline
+   & 100\% & 50\% & 25\% & 25\% & none \\
+   \hline
+   & 75\% & 25\% & 25\% & 25\% & Design step by step Test cases \\
+   \hline
+   
+\end{tabular}
+\end{adjustwidth}
+\end{document}

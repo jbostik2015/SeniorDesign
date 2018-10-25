@@ -1,0 +1,6 @@
+\contentsline {section}{\numberline {1}HEP Senior Design}{1}{section.1}
+\contentsline {section}{\numberline {2}Faculty Sponsor}{1}{section.2}
+\contentsline {section}{\numberline {3}Client}{1}{section.3}
+\contentsline {section}{\numberline {4}Meeting with Faculty Sponsor}{1}{section.4}
+\contentsline {section}{\numberline {5}Meeting with Client}{1}{section.5}
+\contentsline {section}{\numberline {6}Progress of current Milestone}{2}{section.6}
