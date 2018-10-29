@@ -24,3 +24,5 @@
 \contentsline {subsection}{\numberline {11.2}Development MTS Machine}{6}{subsection.11.2}
 \contentsline {subsection}{\numberline {11.3}Computing Cluster}{6}{subsection.11.3}
 \contentsline {subsection}{\numberline {11.4}GEM Computers}{6}{subsection.11.4}
+\contentsline {subsection}{\numberline {11.5}Sponsor Signature}{6}{subsection.11.5}
+\contentsline {section}{\numberline {12}Sponsor Evaluation}{7}{section.12}

@@ -43,6 +43,18 @@
 
 \lstset{style=mystyle}
 
+\newcommand{\titledate}[2][2.5in]{%
+	\noindent%
+	\begin{tabular}{@{}p{#1}@{}}
+		\\ \hline \\[-.75\normalbaselineskip]
+		#2
+	\end{tabular} \hspace{1in}
+	\begin{tabular}{@{}p{#1}@{}}
+		\\ \hline \\[-.75\normalbaselineskip]
+		Date
+	\end{tabular}
+}
+
 \begin{document}
 
 \begin{titlepage}
@@ -251,4 +263,18 @@ from the cluster's drives.
 
 \vspace{1in}
 
+\subsection{Sponsor Signature}
+\vspace{.5in}
+\titledate{Sponsor Signature}
+
+\section{Sponsor Evaluation}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+	\hline
+	Josef Bostik & 0 & 1 & 2 & 3 & 4 & 5 & 5.5 & 6 & 6.5 & 7 & 7.5 & 8 & 8.5 & 9 & 9.5 & 10\\
+	\hline
+	Eric Pereira & 0 & 1 & 2 & 3 & 4 & 5 & 5.5 & 6 & 6.5 & 7 & 7.5 & 8 & 8.5 & 9 & 9.5 & 10\\
+	\hline
+	Ryan Wojtyla & 0 & 1 & 2 & 3 & 4 & 5 & 5.5 & 6 & 6.5 & 7 & 7.5 & 8 & 8.5 & 9 & 9.5 & 10\\
+	\hline
+\end{tabular}
 \end{document}
