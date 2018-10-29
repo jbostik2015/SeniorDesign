@@ -7,6 +7,7 @@
 \pagenumbering{gobble}
 \usepackage{changepage}
 
+\usepackage{makecell}
 
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
@@ -43,19 +44,25 @@
 \lstset{style=mystyle}
 
 \begin{document}
+
 \begin{titlepage}
 	
-
 \author{Josef Bostik\\
 	Eric Pereira\\
 	Ryan Wojtyla\\}
 \date{October 29\textsuperscript{th}, 2018}
 \title{Progress Evaluation 2}
+
 \maketitle
+
 \end{titlepage}
+
 \tableofcontents
+
 \newpage \pagenumbering{arabic}
+
 \section{HEP Senior Design}
+
 \begin{itemize}
 	\item Josef Bostik - \href{mailto:jbostik2015@my.fit.edu}{jbostik2015@my.fit.edu}
 	\item Eric Pereira - \href{mailto:epereira2015@my.fit.edu}{epereira2015@my.fit.edu }
@@ -63,41 +70,184 @@
 \end{itemize}
 
 \section{Faculty Sponsor}
+
 \tab Eraldo Ribeiro - \href{mailto:eribeiro@fit.edu}{eribeiro@fit.edu}
+
 \section{Client}
+
 \tab Marcus Hohlmann - \href{mailto:hohlmann@fit.edu}{hohlmann@fit.edu} \\ 
 \tab Head of the Florida Tech HEP group
+
 \section{Meeting with Faculty Sponsor}
+
 \section{Meeting with Client}
+
 \begin{itemize}
-  \item[] 01 October 2018
-  \item[] 08 October 2018
-  \item[] 15 October 2018
-  \item[] 22 October 2018
+\item[] 01 October 2018
+\item[] 08 October 2018
+\item[] 15 October 2018
+\item[] 22 October 2018
 \end{itemize}
 
-
 \section{Progress of current Milestone}
-\begin{adjustwidth}{-2cm}{}
-\begin{tabular}{|c|c|c|c|c|c|}
-\hline
-Task & Completion\% & Ryan & Eric & Josef & To do \\
-\hline
-Repair data collection of MTS & 100\% & 40\% & 40\% & 20\% & none \\
-\hline
-Install DATA and AMORE & 100\% & 40\% & 20\% & 40\% & Finish installing AMORE \\
-\hline
- & 100\% & 25\% & 50\% & 25\% & none \\
- \hline
- & 100\% & 40\% & 30\% & 35\% & none \\
- \hline
-  & 100\% & 25\% & 25\% & 50\% & none \\
-  \hline
-   & 100\% & 50\% & 25\% & 25\% & none \\
-   \hline
-   & 75\% & 25\% & 25\% & 25\% & Design step by step Test cases \\
-   \hline
-   
-\end{tabular}
-\end{adjustwidth}
+
+  \begin{center}
+  \begin{tabular}{|c|c|c|c|c|c|}
+    \hline
+    Task & \% Completion & Ryan & Eric & Josef & To Do \\
+    \hline
+    Repair MTS Data Collection & 100\% & 40\% & 40\% & 20\% & none \\
+    Install DATE and AMORE & 100\% & 40\% & 20\% & 40\% & none \\
+    Install ROCKS & 50\% & 30\% & 10\% & 10\% & boot into ROCKS \\
+    <something about GEM> & 100\% & 40\% & 30\% & 35\% & none \\
+    \hline   
+  \end{tabular}
+\end{center}
+
+\section{Discussion - Current Milestone}
+
+\subsection{Existing MTS Progress}
+
+\tab At the beginning of this Milestone, the MTS was unable to collect data due
+to software issues. We were able to locate the faulty script and edit it
+accordingly to eliminate the issue. This, however, brought to light a hardware
+problem: one of the Front End Controllers (FECs) was not transmitting any
+data. After some troubleshooting, it was determined that the FEC was working
+properly, but its Analogue to Digital Converter (ADC) was not. Fortunately, we
+had an extra ADC, so we replaced the faulty component. The MTS is now capable of
+taking data! Data collection is not entirely fixed, however. There are some
+software issues regarding how the data is processed and some hardware issues
+regarding the data collection detectors.
+
+\subsection{Development MTS Computer Progress}
+
+\tab Our first challenge was to find the repository from which we could obtain
+the software to be installed, DATE and AMORE. While AMORE was present in the
+CERN CentOS 7 repository we had access to, DATE was not. The latest version of
+DATE is only found in the CERN Scientific Linux 6 repository. Since we did not
+have that repository, we manually created the repository file using the CERN
+CentOS 7 file as a blueprint; we changed all instances of {\tt cc7}
+(\textbf{C}ERN \textbf{C}entOS \textbf{7}) to {\tt slc6} (\textbf{S}cientific
+\textbf{L}inux \textbf{C}ERN \textbf{6}). Miraculously, we were able to access
+the repository and install the software we needed! The current challenge is
+installing the drivers for the MTS's hardware.
+
+\subsection{Computing Cluster}
+
+\tab The cluster continues to be an incredible challenge. Since the Anaconda
+installer does not recognize the internet while on the cluster, we figured it
+might on another machine. As long as ROCKS is installed properly onto a drive,
+we can copy everything over to the cluster's drives. We loaded the installer
+onto a separate machine and attempted to install ROCKS onto a flash drive. While
+Anaconda recognized the internet and began the installation process smoothly, it
+failed partway through. It does not seem this method will work.
+
+\tab For the sake of investigation, I loaded a Ubuntu LiveCD onto the cluster to
+examine the contents of the drives, and what I found surprised me. There are
+CentOS 7 images loaded onto the drives already in the cluster! Perhaps the
+original installation was not completely botched. The drives are having a very
+hard time booting, however, so the next step is to investigate GRUB, the boot
+loader.
+
+\subsection{GEM Machines}
+
+\tab 
+
+\section{Parts Worked On}
+
+\subsection{Josef Bostik}
+
+\begin{itemize}
+  \item software installation on development MTS computer
+  \item software configuration on development MTS computer
+  \item software repair of existing MTS computer
+\end{itemize}
+
+\subsection{Eric Pereira}
+
+\begin{itemize}
+  \item <something about GEM computers>
+  \item software repair of existing MTS computer
+  \item hardware repair of existing MTS computer
+\end{itemize}
+
+\subsection{Ryan Wojtyla}
+
+\begin{itemize}
+  \item troubleshooting the computing cluster
+  \item hardware repair of existing MTS computer
+  \item software installation on development MTS computer
+\end{itemize}
+
+\section{Task Matrix - Next Milestone}
+
+\begin{center}
+  \begin{tabular}{|c|c|c|c|}
+    \hline
+    Task & Ryan & Eric & Josef \\
+    \hline
+    Repair the existing MTS. & 30\% & 40\% & 30\% \\
+    Install hardware drivers onto the development MTS machine. & 40\% & 40\% &
+                                                                               20\%
+    \\
+    Boot the cluster into ROCKS. & 80\% & 10\% & 10\% \\
+    Continue setting up the GEM team's machines. & 15\% & 70\% & 15\% \\
+    \hline
+  \end{tabular}
+\end{center}
+
+\section{Discussion - Next Milestone}
+
+\subsection{Existing MTS}
+
+\tab Although the MTS is once again (mostly) capable of collecting data, it is
+having trouble processing it. A script is run on the raw data file that
+transforms the data into a form usable by data visualization tools, namely
+ROOT. The processed data, however, is not being stored in the expected location,
+or any location for that matter. The current challenge is to diagnose the issue
+and remedy the situation.
+
+\subsection{Development MTS Computer}
+
+\tab With the required software installed, the next step is to prepare for the
+attachment of MTS hardware. The installation of the drivers for that hardware,
+however, is proving to be quite an obstacle. Throughout the software
+installation, we have been following a guide put together by a researcher
+setting up a system similar to our own. While he experienced issues while
+installing his drivers, ours are different. The current challenge is to figure
+out what is wrong with the system's configuration that is preventing the drivers
+from being installed.
+
+\subsection{Computing Cluster}
+
+\tab With the discovery of CentOS 7 images on the cluster's drives, the question
+has changed from ``How do we install ROCKS onto the cluster?'' to ``How do we
+get the cluster to boot into ROCKS?''. We have been conducting extensive
+research into the operation of the boot loader, GRUB, so that we can better
+understand how a working system is constructed in order to more effectively
+diagnose booting issues on the cluster. The current challenge is to load ROCKS
+from the cluster's drives.
+
+\subsection{GEM Machines}
+
+\tab <next step with GEM computers>
+
+\section{Sponsor Feedback}
+
+\subsection{Existing MTS}
+
+\vspace{1in}
+
+\subsection{Development MTS Machine}
+
+\vspace{1in}
+
+\subsection{Computing Cluster}
+
+\vspace{1in}
+
+\subsection{GEM Computers}
+
+\vspace{1in}
+
 \end{document}
