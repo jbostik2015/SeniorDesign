@@ -238,6 +238,17 @@ basenames.
 
 \qq The next step is to set up the MySQL database for AMORE, {\tt amoreMysqlSetup}.
 The defaults are sufficient. Now the AMORE site itself needs to be created, {\tt
-  newAmoreSite}, and the defaults are fine. 
+  newAmoreSite}, and the defaults are fine. The problem with AMORE now is that
+the {\tt amore} command, itself, does not work.
+
+\qq The next step is to install the hardware drivers for the MTS
+hardware. Unfortunately, that is proving difficult. The source for {\tt
+  date-114} does not contain many of the required directories. {\tt date-100},
+however, does, so we've uninstalled the latest version of DATE, and installed
+the old version instead. We've followed all the instructions for configuring
+DATE again, including rebuilding the MySQL database.
+
+\qq We've come across our first issue: {\tt dateLocalConfig -s} is throwing some
+{\tt xinetd} errors.
 
 %-----------END SETUP-----------
