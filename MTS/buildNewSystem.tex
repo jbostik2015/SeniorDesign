@@ -251,4 +251,45 @@ DATE again, including rebuilding the MySQL database.
 \qq We've come across our first issue: {\tt dateLocalConfig -s} is throwing some
 {\tt xinetd} errors.
 
+\qq Another issue is that AMORE doesn't actually work. All of the commands
+exist, but trying to run {\tt amore} results in a error complaining about being
+unable to load the shared library {\tt libCore.so.5.34}. Running a {\tt locate
+  libCore.so} reveals that it's a ROOT library, but that only three versions of
+the file exists: {\tt /usr/lib64/root/libCore.so}, {\tt
+  /usr/lib64/root/libCore.so.6.14}, and {\tt
+  /usr/lib64/root/libCore.so.6.14.04}. Huh, it doesn't look like we have the
+required file. The {\tt LD_LIBRARY_PATH} environment variable, however, does
+contain the appropriate paths of {\tt /opt/amore/lib} and {\tt
+  /usr/lib64/root}. It looks like AMORE depends on ROOT 5 rather than ROOT 6, so
+we've got to downgrade ROOT.
+
+\qq To downgrade ROOT, the current version must be first uninstalled, {\tt sudo
+  yum remove root}. {\tt yum} will verify that ROOT 6 is to be removed, and it
+will warn that AMORE will no longer work, since it depends on ROOT. The
+available versions of ROOT can be checked with, {\tt yum --showduplicates list
+  root}. ROOT 6 is only in the EPEL repository, but ROOT 5 is in the {\tt
+  alice-daq-slc6} repository, so we're going to tell {\tt yum} to install ROOT
+only using the SLC6 repo, {\tt yum --disablerepo=* --enablerepo=alice-daq-slc6
+  install root}. {\tt yum} should report that it will install ROOT 5.
+
+\qq Since AMORE was removed when we removed ROOT, it must be reinstalled, {\tt
+  yum install amore}. Now, when {\tt amore} is run, we get the same error, but
+with a different file, {\tt libAmoreUI.so}, that has only one version. I checked
+the {\tt LD_LIBRARY_PATH} variable, and it was empty! I put in the path to the
+AMORE library, {\tt export LD_LIBRARY_PATH='/opt/amore/lib'}. Now we just need
+to set up AMORE as before.
+
+\qq The first step is to re-add the AMORE binary file to the {\tt PATH}
+environment variable by adding the following to the {\tt ~/.bashrc}, {\tt export
+  PATH=\$PATH:/opt/amore/bin}. Now, {\tt amoreMysqlSetup} can be run. 
+
+\qq ASIDE: It may complain that an {\tt AMORE} database already exists. That's fine, it
+can be removed by using MySQL. The MySQL prompt can be accessed with {\tt mysql
+  -u daq -p}, where the username and password are both {\tt daq} by
+default. Once at the prompt, the available databases can be listed with {\tt
+  show databases;}, the old AMORE database can be removed with {\tt drop
+  database AMORE;}, and the prompt can be exited with {\tt quit}.
+
+\qq The issue now is that {\tt amoreUpdateDB.tcl} is in the wrong place.
+
 %-----------END SETUP-----------
