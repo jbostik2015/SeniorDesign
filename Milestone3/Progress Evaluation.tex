@@ -64,7 +64,7 @@
 	Eric Pereira\\
 	Ryan Wojtyla\\}
 \date{November 26\textsuperscript{th}, 2018}
-\title{Progress Evaluation: Milestone 3}
+\title{Upgrade and Update of Computer Systems within Dr. Hohlmann’s High Energy Physics (HEP) Research Group Progress Evaluation: Milestone 3}
 
 \maketitle
 
@@ -115,14 +115,32 @@
 
 \subsection{Existing MTS Progress}
 
+\tab Part way through the month, one of the MTS's Front End Controllers (FECs)
+failed to transmit any data; it was broken. Fortunately, we had a spare FEC that
+we could put in its place. Unfortunately, however, this FEC was of a different
+model, and it was not working properly with the rest of the hardware. After some
+troubleshooting, it was determined that this newer FEC has a newer version of
+firmware that is incompatible with the older version installed on the other
+FECs. Since we do not have the firmware's binary laying around, we are asking
+former graduate students and other researchers familiar with the MTS if they
+happen to have a copy to send us. 
 
 \subsection{Development MTS Computer Progress}
 
-
+\tab While trying to use the required software we had just installed, namely
+AMORE, it became apparent to us that there were some serious compatibility
+issues. Turns out, the latest version of AMORE depends not on the latest version
+of ROOT, ROOT 6, but the previous version, ROOT 5. After we had discovered this
+issue, we began the task of uninstalling ROOT 6 and installing ROOT 5. The
+process of installing ROOT 5 presented us with another issue: it was having a
+hard time building. After some troubleshooting and research, we discovered that
+we were simply attempting to build the software in the incorrect directory. With
+this solved, ROOT 5 was built and it is installed. AMORE, however, is still
+giving us trouble.
 
 \subsection{Computing Cluster}
 
-
+\tab 
 
 \subsection{GEM Machines}
 
@@ -132,19 +150,24 @@
 \subsection{Josef Bostik}
 
 \begin{itemize}
-\item
+\item Installing and building ROOT 5 on development MTS machine.
+\item Troubleshooting AMORE on the development MTS machine.
 \end{itemize}
 
 \subsection{Eric Pereira}
 
 \begin{itemize}
-\item
+\item Testing two hard drives for GEM Computers
+\item Fixing MySQL installation error on GEM computers
+\item Created script and automated graphing data on Rapberry PI for GEM computers
 \end{itemize}
 
 \subsection{Ryan Wojtyla}
 
 \begin{itemize}
-\item
+\item Assisted with existing MTS troubleshooting.
+\item Troubleshooting AMORE on the development MTS machine.
+\item 
 \end{itemize}
 
 \section{Task Matrix - Next Milestone}
@@ -163,11 +186,19 @@
 
 \subsection{Existing MTS}
 
-
+\tab Once the new FEC is inundated with the correct version of firmware, data
+collection in its present state may resume. The MTS, however, is stilled marred
+by its prior issues of potentially faulty detectors and bugs with data
+processing.
 
 \subsection{Development MTS Computer}
 
-
+\tab The development MTS machine still needs two critical components to be
+completed before serious work on the wrapper application can begin: AMORE needs
+to be made functional and drivers for the MTS hardware need to be
+installed. While these two issues are being worked on, however, work can begin
+on planning how the wrapper application will be constructed, at least at a high
+level.
 
 \subsection{Computing Cluster}
 

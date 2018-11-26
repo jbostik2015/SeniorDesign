@@ -2,6 +2,8 @@
 
 \input{defaultPream}
 
+\begin{document}
+
 %----------BEGIN SETUP----------
 
 \section{Setup}
@@ -25,7 +27,7 @@ CentOS7 binary may be used on SL7 because they are both closely related.
 
 \qq Stefano created a disk image for us before he left with DATE and SCRIBE
 preinstalled and ready to go! It's at {\tt
-  /nas1/cmsgem/software/srs_centos7_2.vdi}. Unfortunately, it's a {\tt vdi} file
+  /nas1/cmsgem/software/srs\_centos7\_2.vdi}. Unfortunately, it's a {\tt vdi} file
 rather than an {\tt iso}, so some conversions need to be done. I'm performing
 everything on the MTS development machine.
 
@@ -43,25 +45,25 @@ get the conversion tools:
 
 \qq Now that VirtualBox is installed, we can start converting! First, the {\tt
   vdi} needs to be converted into a {\tt vmdk}, {\tt VBoxManage clonemedium
-  srs_centos7_2.vdi srs_centos7_2.vmdk --format VMDK}. Then, to a raw file, {\tt
-  gemu-img convert -f vmdk srs_centos7_2.vmdk -O raw srs_centos7_2.raw}. Next,
+  srs\_centos7\_2.vdi srs\_centos7\_2.vmdk --format VMDK}. Then, to a raw file, {\tt
+  gemu-img convert -f vmdk srs\_centos7\_2.vmdk -O raw srs\_centos7\_2.raw}. Next,
 the raw disk must be mounted as a loop device, but, since the image has multiple
 partitions, some extra steps must be performed. 
 
 \qq Since the image has partitions, it must be specially prepared for mounting,
-{\tt loopdev=\$(sudo losetup --show -f srs_centos7_2.raw)}. The the command was
+{\tt loopdev=\$(sudo losetup --show -f srs\_centos7\_2.raw)}. The the command was
 assigned to a variable, because its output will be used more than once. The tool
 {\tt kpartx} needs to be installed, {\tt sudo yum install kpartx}, and used to
 add mappings to the image's partitions, {\tt sudo kpartx -a \$loopdev}. Now, the
 image is ready to be mounted. Create a mount point, {\tt mkdir
-  srs_centos7_2.mount}, and mount the image {\tt sudo mount
-  /dev/mapper/\$(basename \$loopdev)p1 srs_centos7_2.mount}. The image should be
+  srs\_centos7\_2.mount}, and mount the image {\tt sudo mount
+  /dev/mapper/\$(basename \$loopdev)p1 srs\_centos7\_2.mount}. The image should be
 visible from {\tt df -h}, and accessible via the route specified by {\tt df}.
 
 \qq Now a copy may be made of the root file system of the image. Create a
-directory for the file system, {\tt mkdir srs_centos7_2.rootfs}, then copy the
+directory for the file system, {\tt mkdir srs\_centos7\_2.rootfs}, then copy the
 contents of the mounted file system to the new directory, {\tt sudo rsync -a -t -r -S
-  -I srs_centos7_2.mount/ srs_centos7_2.rootfs}. Now that the mount point has
+  -I srs\_centos7\_2.mount/ srs\_centos7\_2.rootfs}. Now that the mount point has
 been copied over, the original may be unmounted. 
 
 \qq Scratch that, we're just gonna put DATE on it. Stefano linked me to the CERN
@@ -81,10 +83,10 @@ dependencies from the CERN's Linux website where all of its packages are hosted,
 the installation process, a yum repository containing the RPMs can be created. A
 new file, {\tt /etc/yum.repos.d/localCERN.repo} was created, and in it were
 placed the lines: \\
-{\tt [localCERN] # the name of the new repository} \\
+{\tt [localCERN] \# the name of the new repository} \\
 {\tt baseurl = file://<full path to directory containing RPMs>} \\
-{\tt enabled=1 # enable the repo be default} \\
-{\tt gpgcheck=0 # disable package verification} \\
+{\tt enabled=1 \# enable the repo be default} \\
+{\tt gpgcheck=0 \# disable package verification} \\
 While disabling package verification is generally bad practice, we do not have
 the keys necessary to properly install them. We also know where we got them
 from, and they are locally installed, so, in this particular case, it should not
@@ -108,29 +110,29 @@ configured with, {\tt sudo locmap --configure all}.
 
 \qq Well, turns out the AFS stuff doesn't work, probably because we couldn't
 connect to the server. Fortunately, we only needed AFS to get the CERN
-repositories, {\tt yum-alice-daq.cc7_64.repo} and {\tt
-  yum-alice-daq.slc6_64.repo}. I had grabbed {\tt yum-alice-daq.cc7_64.repo}
+repositories, {\tt yum-alice-daq.cc7\_64.repo} and {\tt
+  yum-alice-daq.slc6\_64.repo}. I had grabbed {\tt yum-alice-daq.cc7\_64.repo}
 from another computer, but the SLC6 repo was nowhere to be found. This problem
 was solved by creating the repo file myself by copying the CC7 file, and
 changing the URLs to point to where the SLC6 RPMs ought to be located. The
-contents of {\tt yum-alice-daq.cc7_64.repo} is: \\
+contents of {\tt yum-alice-daq.cc7\_64.repo} is: \\
 {\tt [main]} \\
 {\tt [alice-daq-cc7]} \\
 {\tt name=ALICE DAQ software and dependencies - CC7/64/} \\
-{\tt baseurl=http://cern.ch/alice-daq/yum-alice-daq.cc7_64/} \\
+{\tt baseurl=http://cern.ch/alice-daq/yum-alice-daq.cc7\_64/} \\
 {\tt
-  baseurl=https://yum:daqsoftrpm@alice-daq-yum.web.cern.ch/alice-daq-yum/cc7_64/}
+  baseurl=https://yum:daqsoftrpm@alice-daq-yum.web.cern.ch/alice-daq-yum/cc7\_64/}
 \\
 {\tt enabled=1} \\
 {\tt protect=1} \\
 {\tt gpgcheck=0} \\
-The contents of the newly created {\tt yum-alice-daq.slc6_64.repo} is: \\
+The contents of the newly created {\tt yum-alice-daq.slc6\_64.repo} is: \\
 {\tt [main]} \\
 {\tt [alice-daq-slc6]} \\
 {\tt name=ALICE DAQ software and dependencies - slc6/64/} \\
-{\tt baseurl=http://cern.ch/alice-daq/yum-alice-daq.slc6_64/} \\
+{\tt baseurl=http://cern.ch/alice-daq/yum-alice-daq.slc6\_64/} \\
 {\tt
-  baseurl=https://yum:daqsoftrpm@alice-daq-yum.web.cern.ch/alice-daq-yum/slc6_64/}
+  baseurl=https://yum:daqsoftrpm@alice-daq-yum.web.cern.ch/alice-daq-yum/slc6\_64/}
 \\
 {\tt enabled=1} \\
 {\tt protect=1} \\
@@ -165,13 +167,13 @@ but we can just erase this package, since we don't need it, {\tt yum erase
   service mysql start}. Since the root account must be setup first, and the
 temporary root password is stored in root's home directory, we must switch to
 root to complete setting up the initial account, {\tt sudo su}. The temporary
-password is viewed with {\tt cat /root/.mysql_secret}. Copy that password, then
+password is viewed with {\tt cat /root/.mysql\_secret}. Copy that password, then
 paste it when prompted after running, as root, {\tt mysqladmin -u root -h
   localhost -p password}. 
 
 \qq Now that the root account has been created, the user accounts can be
-added. You may log out of root. First the {\tt DATE_SITE} environment variable
-must be cleared, {\tt unset DATE_SITE}, then the date setup script must be
+added. You may log out of root. First the {\tt DATE\_SITE} environment variable
+must be cleared, {\tt unset DATE\_SITE}, then the date setup script must be
 executed, {\tt . /date/setup.sh}. Afterwards, the MySQL initialization script
 must be executed to configure the new database, {\tt newMysql.sh}. While the
 settings may be changed to whatever best fits the situation, the defaults are
@@ -186,7 +188,7 @@ added; these are not the default settings.
 
 \qq With the base DATE configuration complete, the local configuration can
 begin. These next few steps must be completed as root ({\tt sudo su}). The path
-of the DATE_SITE must be set, {\tt export DATE_SITE=/dateSite}, the setup script
+of the DATE\_SITE must be set, {\tt export DATE\_SITE=/dateSite}, the setup script
 must be executed, {\tt . /date/setup.sh}, and the local configuration command
 must be run, {\tt dateLocalConfig -s}.
 
@@ -206,19 +208,19 @@ immediately will work, somehow.
 
 \qq Next, the DIM (Distributed Information Management) name server must be
 launched (and must be launched after each boot; this will be automated), {\tt
-  /date/runControl/start_dim.sh &}. This returned a ``no process found'' error,
+  /date/runControl/start\_dim.sh \&}. This returned a ``no process found'' error,
 but running it again seemed to work fine. This error comes about because of
-slightly different paths to {\tt do_start_dim.sh}, whose location can be found
-with {\tt locate do_start_dim.sh}.
+slightly different paths to {\tt do\_start\_dim.sh}, whose location can be found
+with {\tt locate do\_start\_dim.sh}.
 
 \qq The infoLoggerServer must also be started (these commands must be run after
 each boot; this will be automated):\\
-{\tt export DATE_SITE=/dateSite} \\
+{\tt export DATE\_SITE=/dateSite} \\
 {\tt . /date/setup.sh} \\
 {\tt /date/infoLogger/infoLoggerServer.sh start} \\
 
 \qq The DAQ ought to be ready to be launched:\\
-{\tt export DATE_SITE=/dateSite}\\
+{\tt export DATE\_SITE=/dateSite}\\
 {\tt cd /date} \\
 {\tt . ./setup.sh}\\
 {\tt infoBrowser}\\
@@ -233,7 +235,7 @@ are in the same directory. In our case, that directory is {\tt /opt/amore/bin/},
 so that is what we will add to the {\tt PATH} variable, {\tt
   PATH=\$PATH:/opt/amore/bin}. Be sure to add {\tt export
   PATH=\$PATH:/opt/amore/bin} to both the user's and root's {\tt
-  ~/.bash_profile}. Now all the AMORE tools are accessible by their
+  ~/.bash\_profile}. Now all the AMORE tools are accessible by their
 basenames.
 
 \qq The next step is to set up the MySQL database for AMORE, {\tt amoreMysqlSetup}.
@@ -251,4 +253,70 @@ DATE again, including rebuilding the MySQL database.
 \qq We've come across our first issue: {\tt dateLocalConfig -s} is throwing some
 {\tt xinetd} errors.
 
+\qq Another issue is that AMORE doesn't actually work. All of the commands
+exist, but trying to run {\tt amore} results in a error complaining about being
+unable to load the shared library {\tt libCore.so.5.34}. Running a {\tt locate
+  libCore.so} reveals that it's a ROOT library, but that only three versions of
+the file exists: {\tt /usr/lib64/root/libCore.so}, {\tt
+  /usr/lib64/root/libCore.so.6.14}, and {\tt
+  /usr/lib64/root/libCore.so.6.14.04}. Huh, it doesn't look like we have the
+required file. The {\tt LD\_LIBRARY\_PATH} environment variable, however, does
+contain the appropriate paths of {\tt /opt/amore/lib} and {\tt
+  /usr/lib64/root}. It looks like AMORE depends on ROOT 5 rather than ROOT 6, so
+we've got to downgrade ROOT.
+
+\qq To downgrade ROOT, the current version must be first uninstalled, {\tt sudo
+  yum remove root}. {\tt yum} will verify that ROOT 6 is to be removed, and it
+will warn that AMORE will no longer work, since it depends on ROOT. The
+available versions of ROOT can be checked with, {\tt yum --showduplicates list
+  root}. ROOT 6 is only in the EPEL repository, but ROOT 5 is in the {\tt
+  alice-daq-slc6} repository, so we're going to tell {\tt yum} to install ROOT
+only using the SLC6 repo, {\tt yum --disablerepo=* --enablerepo=alice-daq-slc6
+  install root}. {\tt yum} should report that it will install ROOT 5.
+
+\qq Since AMORE was removed when we removed ROOT, it must be reinstalled, {\tt
+  yum install amore}. Now, when {\tt amore} is run, we get the same error, but
+with a different file, {\tt libAmoreUI.so}, that has only one version. I checked
+the {\tt LD\_LIBRARY\_PATH} variable, and it was empty! I put in the path to the
+AMORE library, {\tt export LD\_LIBRARY\_PATH='/opt/amore/lib'}. Now we just need
+to set up AMORE as before.
+
+\qq The first step is to re-add the AMORE binary file to the {\tt PATH}
+environment variable by adding the following to the {\tt ~/.bashrc}, {\tt export
+  PATH=\$PATH:/opt/amore/bin}. Now, {\tt amoreMysqlSetup} can be run. 
+
+\qq ASIDE: It may complain that an {\tt AMORE} database already exists. That's fine, it
+can be removed by using MySQL. The MySQL prompt can be accessed with {\tt mysql
+  -u daq -p}, where the username and password are both {\tt daq} by
+default. Once at the prompt, the available databases can be listed with {\tt
+  show databases;}, the old AMORE database can be removed with {\tt drop
+  database AMORE;}, and the prompt can be exited with {\tt quit}.
+
+\qq The issue now is that {\tt amoreUpdateDB.tcl} is in the wrong place.
+
+\qq When we downgraded ROOT, we also had to reinstall all of its dependencies
+and rebuild it. The rebuild process was giving us some issues because it cannot
+be built in the installation directory; it needs to be first placed in the {\tt
+  builddir} directory, then built. Now that ROOT is installed, AMORE may be set
+up again as normal with {\tt amoreMysqlSetup} and {\tt newAmoreSite}.
+
+\qq When {\tt amore} is run, however, after several ROOT warnings about a bunch
+of classes already existing in {\tt TClassTable}, it says {\tt terminate called
+  after throwing an instance of 'std::runtime_error'}, then {\tt what()}, the
+AMORE function that is supposed to print out what caused an error, shows a
+``Usage'' dialogue for some command; it just prints out ``Usage:'' followed by
+some flags. Evidently, the issue is that some command
+is not being executed as expected, or something isn't installed/configured
+properly.
+
+\qq Let's first try to find which command this ``Usage'' belongs to. I navigated
+to {\tt /opt/amore} and grepped for a keyword in one of the flag definitions,
+{\tt grep -R ``<LIBSUFFIX>'' *}, and some binary files were matched, {\tt
+  lib/libAmoreCore.so} and {\tt lib/libAmoreDA.a}. To tell grep to treat the
+binary files as text files, the {\tt -a} flay may be used, {\tt grep -aR
+  ``<LIBSUFFIX>'' *}. Digging into those binaries didn't help a whole lot; I
+just found the ``Usage'' text on its own without any context.
+
 %-----------END SETUP-----------
+
+\end{document}
