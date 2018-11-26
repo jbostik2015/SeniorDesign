@@ -55,6 +55,9 @@
 	\end{tabular}
 }
 
+% for forcing tables to fit
+\usepackage{changepage}
+
 \begin{document}
 	
 
@@ -101,15 +104,21 @@
 
 \section{Progress of current Milestone}
 
+\begin{adjustwidth}{-2cm}{}
   \begin{center}
-  \begin{tabular}{|c|c|c|c|c|c|}
-    \hline
-    Task & \% Completion & Ryan & Eric & Josef & To Do \\
-    \hline
-
-    \hline   
-  \end{tabular}
-\end{center}
+    \begin{tabular}{|c|c|c|c|c|c|}
+      \hline
+      Task & \% Completion & Ryan & Eric & Josef & To Do \\
+      \hline
+      Repair Existing MTS & 70\% & 20\% & 40\% & 10\% & FEC firmware \\
+      Prepare Development MTS Machine & 70\% & 20\% & 10\% & 40\% & repair
+                                                                    software \\
+      Boot Cluster into ROCKS & 80\% & 60\% & 10\% & 10\% & fix boot issues \\
+      GEM Machines & 80\% & 10\% & 60\% & 10\% & continue reorganization \\
+      \hline   
+    \end{tabular}
+  \end{center}
+\end{adjustwidth}
 
 \section{Discussion - Current Milestone}
 
@@ -140,7 +149,14 @@ giving us trouble.
 
 \subsection{Computing Cluster}
 
-\tab 
+\tab A considerable amount of time was spend playing with the CentOS 7 images
+discovered on the drive in the CE. It was discovered that, with the correct GRUB
+configuration, the images can be loaded onto the machine. The images, however,
+do not work; they kick the user straight to ``emergency mode''. The reason for
+the boot failure is cited to be ``Failed to start Switch Root''. A meeting has
+been scheduled with the IT department to explore possible causes of the original
+internet connectivity issue with Anaconda, and perhaps some insight into this
+new problem can be gleaned from the meeting as well.
 
 \subsection{GEM Machines}
 
@@ -167,6 +183,10 @@ giving us trouble.
 \begin{itemize}
 \item Assisted with existing MTS troubleshooting.
 \item Troubleshooting AMORE on the development MTS machine.
+<<<<<<< HEAD
+=======
+\item Attempted to boot into found images on the cluster.
+>>>>>>> d9fd5feee38a5d0efef39224c55b6b76e0ef0796
 \end{itemize}
 
 \section{Task Matrix - Next Milestone}
@@ -176,7 +196,11 @@ giving us trouble.
     \hline
     Task & Ryan & Eric & Josef \\
     \hline
-    
+    Repair Existing MTS & 40\% & 30\% & 30\% \\
+    Prepare Development MTS & 40\% & 20\% & 40\% \\
+    Begin Wrapper Planning & 30\% & 20\% & 50\% \\
+    Boot Cluster into ROCKS & 80\% & 10\% & 10\% \\
+    Reorganize Highbay & 10\% & 20\% & 70\% \\
     \hline
   \end{tabular}
 \end{center}
@@ -201,7 +225,12 @@ level.
 
 \subsection{Computing Cluster}
 
-
+\tab With the discovered images found to be nonfunctional, we are running out of
+options for what we are able to do. Aside from the scheduled meeting with the IT
+department, we are left to investigate the images' ``Failed to start Switch
+Root'' boot errors. If the original internet connectivity issue is solved during
+the meeting, or if the boot error is resolved, we will finally be able to
+install ROCKS onto the cluster.
 
 \subsection{GEM Machines}
 
