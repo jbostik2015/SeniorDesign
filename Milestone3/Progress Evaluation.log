@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6730 64-bit) (preloaded format=pdflatex 2018.8.22)  29 OCT 2018 17:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6730 64-bit) (preloaded format=pdflatex 2018.8.22)  29 OCT 2018 17:47
 entering extended mode
 **"./Progress Evaluation.tex"
 ("Progress Evaluation.tex"
@@ -257,9 +257,9 @@ LaTeX Info: Redefining \nameref on input line 58.
 \everyMPtoPDFconversion=\toks21
 )
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <14.4> on input line 69.
+(Font)              <14.4> on input line 70.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 69.
+(Font)              <7> on input line 70.
  [1
 
 {C:/Users/Eric Pereira/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
@@ -278,48 +278,48 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.74 \newpage
+l.75 \newpage
               \pagenumbering{arabic} [1]pdfTeX warning (ext4): destination with
  the same identifier (name{page.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.74 \newpage
+l.75 \newpage
               \pagenumbering{arabic} [2]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 79.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 80.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 79.
- [1] [2] [3]
-Overfull \vbox (4.34665pt too high) has occurred while \output is active []
-
-
-[4]
-Overfull \hbox (48.84213pt too wide) in paragraph at lines 199--200
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 80.
+ [1]
+Overfull \hbox (48.84213pt too wide) in paragraph at lines 200--201
 []   []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 199--200
+Underfull \hbox (badness 10000) in paragraph at lines 200--201
 
  []
 
+[2] [3]
+Overfull \vbox (104.04411pt too high) has occurred while \output is active []
 
-Overfull \hbox (38.4032pt too wide) in paragraph at lines 202--211
+
+[4]
+Overfull \hbox (38.4032pt too wide) in paragraph at lines 203--212
 [] 
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 212.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 213.
 [5]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 212.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 213.
  ("Progress Evaluation.aux")
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 212.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 212.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 213.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 213.
 Package rerunfilecheck Info: File `"Progress Evaluation".out' has not changed.
 (rerunfilecheck)             Checksum: ABF0EDEE1F093DC485C902E133F86166;1786.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 212.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 213.
  ) 
 Here is how much of TeX's memory you used:
  6404 strings out of 492973
@@ -334,7 +334,7 @@ ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Fil
 es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX
  2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/font
 s/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on "Progress Evaluation.pdf" (8 pages, 87670 bytes).
+Output written on "Progress Evaluation.pdf" (8 pages, 87676 bytes).
 PDF statistics:
  212 PDF objects out of 1000 (max. 8388607)
  36 named destinations out of 1000 (max. 500000)
