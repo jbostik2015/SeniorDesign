@@ -129,11 +129,18 @@ happen to have a copy to send us.
 
 \tab While trying to use the required software we had just installed, namely
 AMORE, it became apparent to us that there were some serious compatibility
-issues. 
+issues. Turns out, the latest version of AMORE depends not on the latest version
+of ROOT, ROOT 6, but the previous version, ROOT 5. After we had discovered this
+issue, we began the task of uninstalling ROOT 6 and installing ROOT 5. The
+process of installing ROOT 5 presented us with another issue: it was having a
+hard time building. After some troubleshooting and research, we discovered that
+we were simply attempting to build the software in the incorrect directory. With
+this solved, ROOT 5 was built and it is installed. AMORE, however, is still
+giving us trouble.
 
 \subsection{Computing Cluster}
 
-
+\tab 
 
 \subsection{GEM Machines}
 

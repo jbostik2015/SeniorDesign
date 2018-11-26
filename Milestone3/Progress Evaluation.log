@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/MacPorts 2017_3) (preloaded format=pdflatex 2018.5.11)  25 NOV 2018 20:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/MacPorts 2017_3) (preloaded format=pdflatex 2018.5.11)  25 NOV 2018 21:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -608,52 +608,52 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 80.
- [1] [2] [3]
+ [1] [2] [3] [4]
 Overfull \vbox (4.34665pt too high) has occurred while \output is active []
 
 
-[4]
-Overfull \hbox (48.84213pt too wide) in paragraph at lines 211--212
+[5]
+Overfull \hbox (48.84213pt too wide) in paragraph at lines 218--219
 []   []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 211--212
+Underfull \hbox (badness 10000) in paragraph at lines 218--219
 
  []
 
 
-Overfull \hbox (38.4032pt too wide) in paragraph at lines 214--223
+Overfull \hbox (38.4032pt too wide) in paragraph at lines 221--230
 [] 
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 224.
-[5]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 224.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 231.
+[6]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 231.
  (./Progress Evaluation.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 224.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 224.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 231.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 231.
 Package rerunfilecheck Info: File `"Progress Evaluation".out' has not changed.
 (rerunfilecheck)             Checksum: 95A74A9A488B97764E02311247D49693;1758.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 224.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 231.
  ) 
 Here is how much of TeX's memory you used:
- 6801 strings out of 494936
- 97277 string characters out of 6180785
+ 6802 strings out of 494936
+ 97283 string characters out of 6180785
  181033 words of memory out of 5000000
  10034 multiletter control sequences out of 15000+600000
  8808 words of font info for 31 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 28i,8n,32p,194b,338s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 28i,8n,32p,194b,384s stack positions out of 5000i,500n,10000p,200000b,80000s
 </opt/local/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></o
 pt/local/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></opt/loc
 al/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr12.pfb></opt/local/sha
 re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr17.pfb></opt/local/share/tex
 mf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on "Progress Evaluation.pdf" (8 pages, 71433 bytes).
+Output written on "Progress Evaluation.pdf" (9 pages, 72472 bytes).
 PDF statistics:
- 215 PDF objects out of 1000 (max. 8388607)
- 198 compressed objects within 2 object streams
- 36 named destinations out of 1000 (max. 500000)
+ 223 PDF objects out of 1000 (max. 8388607)
+ 204 compressed objects within 3 object streams
+ 37 named destinations out of 1000 (max. 500000)
  225 words of extra memory for PDF output out of 10000 (max. 10000000)
 
