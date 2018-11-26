@@ -297,10 +297,25 @@ default. Once at the prompt, the available databases can be listed with {\tt
 \qq When we downgraded ROOT, we also had to reinstall all of its dependencies
 and rebuild it. The rebuild process was giving us some issues because it cannot
 be built in the installation directory; it needs to be first placed in the {\tt
-  builddir} directory, then built. Now that ROOT is installed, we can continue
-with AMORE.
+  builddir} directory, then built. Now that ROOT is installed, AMORE may be set
+up again as normal with {\tt amoreMysqlSetup} and {\tt newAmoreSite}.
 
-\qq We need to continue setting AMORE up. The MySQL database needs to be set up again
+\qq When {\tt amore} is run, however, after several ROOT warnings about a bunch
+of classes already existing in {\tt TClassTable}, it says {\tt terminate called
+  after throwing an instance of 'std::runtime_error'}, then {\tt what()}, the
+AMORE function that is supposed to print out what caused an error, shows a
+``Usage'' dialogue for some command; it just prints out ``Usage:'' followed by
+some flags. Evidently, the issue is that some command
+is not being executed as expected, or something isn't installed/configured
+properly.
+
+\qq Let's first try to find which command this ``Usage'' belongs to. I navigated
+to {\tt /opt/amore} and grepped for a keyword in one of the flag definitions,
+{\tt grep -R ``<LIBSUFFIX>'' *}, and some binary files were matched, {\tt
+  lib/libAmoreCore.so} and {\tt lib/libAmoreDA.a}. To tell grep to treat the
+binary files as text files, the {\tt -a} flay may be used, {\tt grep -aR
+  ``<LIBSUFFIX>'' *}. Digging into those binaries didn't help a whole lot; I
+just found the ``Usage'' text on its own without any context.
 
 %-----------END SETUP-----------
 
