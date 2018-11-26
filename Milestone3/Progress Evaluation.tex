@@ -55,6 +55,9 @@
 	\end{tabular}
 }
 
+% for forcing tables to fit
+\usepackage{changepage}
+
 \begin{document}
 	
 
@@ -101,15 +104,21 @@
 
 \section{Progress of current Milestone}
 
+\begin{adjustwidth}{-2cm}{}
   \begin{center}
-  \begin{tabular}{|c|c|c|c|c|c|}
-    \hline
-    Task & \% Completion & Ryan & Eric & Josef & To Do \\
-    \hline
-
-    \hline   
-  \end{tabular}
-\end{center}
+    \begin{tabular}{|c|c|c|c|c|c|}
+      \hline
+      Task & \% Completion & Ryan & Eric & Josef & To Do \\
+      \hline
+      Repair Existing MTS & 70\% & 20\% & 40\% & 10\% & FEC firmware \\
+      Prepare Development MTS Machine & 70\% & 20\% & 10\% & 40\% & repair
+                                                                    software \\
+      Boot Cluster into ROCKS & 80\% & 60\% & 10\% & 10\% & fix boot issues \\
+      GEM Machines & 80\% & 10\% & 60\% & 10\% & continue reorganization \\
+      \hline   
+    \end{tabular}
+  \end{center}
+\end{adjustwidth}
 
 \section{Discussion - Current Milestone}
 
@@ -174,7 +183,7 @@ new problem can be gleaned from the meeting as well.
 \begin{itemize}
 \item Assisted with existing MTS troubleshooting.
 \item Troubleshooting AMORE on the development MTS machine.
-\item 
+\item Attempted to boot into found images on the cluster.
 \end{itemize}
 
 \section{Task Matrix - Next Milestone}
@@ -184,7 +193,11 @@ new problem can be gleaned from the meeting as well.
     \hline
     Task & Ryan & Eric & Josef \\
     \hline
-    
+    Repair Existing MTS & 40\% & 30\% & 30\% \\
+    Prepare Development MTS & 40\% & 20\% & 40\% \\
+    Begin Wrapper Planning & 30\% & 20\% & 50\% \\
+    Boot Cluster into ROCKS & 80\% & 10\% & 10\% \\
+    Reorganize Highbay & 10\% & 20\% & 70\% \\
     \hline
   \end{tabular}
 \end{center}
