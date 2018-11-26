@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/MacPorts 2017_3) (preloaded format=pdflatex 2018.5.11)  25 NOV 2018 21:12
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/MacPorts 2017_3) (preloaded format=pdflatex 2018.5.11)  25 NOV 2018 21:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -609,29 +609,29 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 80.
  [1] [2] [3] [4]
-Overfull \hbox (48.84213pt too wide) in paragraph at lines 221--222
+Overfull \hbox (48.84213pt too wide) in paragraph at lines 226--227
 []   []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 221--222
+Underfull \hbox (badness 10000) in paragraph at lines 226--227
 
  []
 
 
-Overfull \hbox (38.4032pt too wide) in paragraph at lines 224--233
+Overfull \hbox (38.4032pt too wide) in paragraph at lines 229--238
 [] 
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 234.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 239.
 [5]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 234.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 239.
  (./Progress Evaluation.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 234.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 234.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 239.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 239.
 Package rerunfilecheck Info: File `"Progress Evaluation".out' has not changed.
 (rerunfilecheck)             Checksum: 95A74A9A488B97764E02311247D49693;1758.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 234.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 239.
  ) 
 Here is how much of TeX's memory you used:
  6801 strings out of 494936
@@ -646,7 +646,7 @@ pt/local/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></opt/loc
 al/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr12.pfb></opt/local/sha
 re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr17.pfb></opt/local/share/tex
 mf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on "Progress Evaluation.pdf" (8 pages, 72361 bytes).
+Output written on "Progress Evaluation.pdf" (8 pages, 72697 bytes).
 PDF statistics:
  215 PDF objects out of 1000 (max. 8388607)
  198 compressed objects within 2 object streams
