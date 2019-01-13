@@ -96,7 +96,7 @@ Dr. Marcus Hohlmann, mhohlmann@fit.edu
 \tab Weekly Monday meetings
 
 \section{Goal and Motivation}
-
+The computer systems of the group have been in disarray for some time, and these issues have been hindering the progress of the group. The goal of the project is to repair and improve the group’s resources to reduce the number of unnecessary obstacles the group must overcome in order to conduct their research.
 \section{Approach}
 \subsection{Compute Cluster}
 Before any of the necessary software can be installed onto the cluster, the
@@ -109,7 +109,7 @@ bringing the cluster back into operation with the Open Science Grid through the
 installation and configuration of required OSG software.
 \subsection{Computer Systems}
 \subsection{Muon Tomography Station (MTS)}
-
+The computer managing the muon tomography station (MTS) is encumbered by heavily outdated software that dramatically hinders its basic operation. Additionally, the workflow for taking data from the MTS is comprised of several loosely connected programs and scripts that are difficult to manage and do not provide diagnostic information about the data taking process. The management computer’s software must be brought up to date, and the data taking workflow must be rewritten to allow for troubleshooting capabilities. As we have integrated the required software for a new MTS on our MTS development machine, we will now be focusing on developing a script to automate the data transfer between applications.
 \section{Novel Features/Functionalities}
 \subsection{Compute Cluster}
 With the cluster updated, the research group will regain the ability to run
@@ -118,7 +118,7 @@ data. Additionally, scripts will be created that will ease the researchers'
 interaction with HTCondor so that submitting jobs will be less painful.
 \subsection{Computer Systems}
 \subsection{MTS}
-
+On the newly set up development MTS machine, we will begin to create a wrapper class that automates the data transfer between the applications DATE, AMORE, and ROOT. The purpose of these scripts are to reduce the complication involved with current client-side use cases.
 \section{Technical Challenges}
 Technical challenges for the cluster, while unknown at present, will
 undoubtedly manifest themselves as miscellaneous problems along the course of
@@ -130,17 +130,21 @@ component integration and software configuration.
 \section{Milestone 4 (Feb 11)}
 \begin{itemize}
   \item Fully integrate all parts of the cluster.
+  \item Assemble components for a wrapper class on the development MTS
+  \item Begin development for a wrapper class on the development MTS
 \end{itemize}
 
 \section{Milestone 5 (Mar 18)}
 \begin{itemize}
   \item Install and configure HTCondor.
   \item Create job submission script.
+  \item Continue development of a wrapper class on the development MTS
 \end{itemize}
 
 \section{Milestone 6 (April 15)}
 \begin{itemize}
   \item Integrate the cluster into OSG's compute grid.
+  \item Test and integrate the wrapper class on the development MTS
 \end{itemize}
 
 \section{Task Matrix for Milestone 4}
