@@ -103,13 +103,45 @@ group’s resources to reduce the number of unnecessary obstacles
 the group must overcome in order to conduct their research.
 \section{Approach}
 \subsection{Compute Cluster}
+\tab The job of a computing cluster is to process both local jobs
+submitted by researchers at FIT and jobs submitted via the Open
+Science Grid, a platform through which researchers from around
+the world may submit jobs to be processed. After installing
+ROCKS, a distribution of CentOS specifically designed to easily
+integrate all the components of a cluster, the next
+step is to attach all the different components
+of the compute cluster (SE, NAS's, etc.). Once the cluster is built,
+HTCondor must be installed and configured to run jobs, then the
+cluster must be reintegrated into the Open Science Grid to allow
+for global job submissions. Scripts will also be written that ease
+the process of locally submitting jobs.
 \subsection{Computer Systems}
+\tab The GEM team makes use of several di↵erent computers to
+both control hardware and take data. Most computers have been serviced
+and are currently in good use. However, some of the machines are
+still considered to be unreliable as they are not able to backup
+crucial data stored locally on the computers. The challenge currently
+is to find effective ways to create better storage methods, ideally
+using methods like RAID or integrating the computers with the compute
+cluster creating a GEM ecosystem.
 \subsection{Muon Tomography Station (MTS)}
+\subsubsection{Current MTS}
+\tab The computer managing the (MTS) is encumbered by heavily outdated software that dramatically hinders its basic operation. Additionally, the workflow for taking data from the MTS is
+comprised of several loosely connected programs and scripts that
+are difficult to manage and do not provide diagnostic information
+about the data taking process. The management computer’s software must be brought up to date, and the data taking workflow must be rewritten to allow for troubleshooting capabilities.
+\subsubsection{Development MTS}
+\tab The computer managing the (MTS) is encumbered by heavily outdated software that dramatically hinders its basic operation. Additionally, the workflow for taking data from the MTS is
+comprised of several loosely connected programs and scripts that
+are difficult to manage and do not provide diagnostic information
+about the data taking process. The management computer’s software must be brought up to date, and the data taking workflow must be rewritten to allow for troubleshooting capabilities.
+
 
 \section{Novel Features/Functionalities}
 \subsection{Compute Cluster}
+\tab The compute cluster was originally designed with the intent and use of being a cloud computing device for 
 \subsection{Computer Systems}
-\tab The computer systems in the HEP lab store important data locally on their systems that are crucial to their 
+\tab The computer systems in the HEP lab store important data locally on their systems that are crucial to the use of the lab/
 \subsection{MTS}
 \subsubsection{Current MTS}
 \subsubsection{Development MTS}
@@ -118,6 +150,7 @@ the group must overcome in order to conduct their research.
 
 \section{Technical Challenges}
 \subsection{Compute Cluster}
+\tab The computer cluster has recently had an operating system placed on the 
 \subsection{Computer Systems}
 \tab The computer systems in the lab hold major data that is only stored locally on very specific computers. The issue here is that a lot of these computers do not have a backup of their data somewhere else which means that if there is a major hard drive failure lots of data will be lost. The ideal solution to this is to run all machines in RAID 1 with two hard drives in each machine, which will striped all data on one hard drive to another creating a backup. 
 \subsection{MTS}
@@ -125,31 +158,32 @@ the group must overcome in order to conduct their research.
 \tab The current MTS currently has a major issue where one of the FEC's is unusable due to bad firmware. Having one bad FEC renders the entire MTS useless due to how the software on the MTS computer currently works. \\
 \tab Another technical challenge with the current MTS is hardware wiring. The wiring of the MTS is disasterous, and makes it very difficult to unplug and and plug in other ports without losing track of cables, or putting cables in the wrong spot. This is because many cables are not labelled, and some cables are as long as 30 feet even when they are only connecting things roughly three to six feet away.
 \subsubsection{Development MTS}
-
+\tab The development MTS has been having a few software issues, specifically with running AMORE with the DATE software. This is a challenge as there is not much documentation as to the process of installing these softwares with the new supported operating system of CERN: CentOS.
  
 \section{Design}
 
 \section{Progress Summary}
 
 \section{Milestone 4 (Feb 11)}
-\subsection{Compute Cluster}
-\subsection{Computer Systems}
-\subsection{MTS}
-\subsubsection{Current MTS}
-\subsubsection{Development MTS}
+\begin{itemize}
+	\item 
+\end{itemize}
+
 \section{Milestone 5 (Mar 18)}
-\subsection{Compute Cluster}
-\subsection{Computer Systems}
-\subsection{MTS}
-\subsubsection{Current MTS}
-\subsubsection{Development MTS}
+\begin{itemize}
+	\item 
+\end{itemize}
+
 \section{Milestone 6 (April 15)}
-\subsection{Compute Cluster}
-\subsection{Computer Systems}
-\subsection{MTS}
-\subsubsection{Current MTS}
-\subsubsection{Development MTS}
+\begin{itemize}
+	\item Create the Showcase Poster
+	\item 
+\end{itemize}
+
 \section{Task Matrix for Milestone 4}
+\begin{tabular}
+
+\end{tabular}
 
 \section{Description of each planned task for Milestone 4}
 \subsection{Compute Cluster}
