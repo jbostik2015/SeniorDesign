@@ -11,14 +11,21 @@
 \contentsline {section}{\numberline {8}Novel Features/Functionalities}{2}{section.8}
 \contentsline {subsection}{\numberline {8.1}Compute Cluster}{2}{subsection.8.1}
 \contentsline {subsection}{\numberline {8.2}Computer Systems}{2}{subsection.8.2}
-\contentsline {subsection}{\numberline {8.3}MTS}{3}{subsection.8.3}
-\contentsline {section}{\numberline {9}Technical Challenges}{3}{section.9}
-\contentsline {section}{\numberline {10}Design}{3}{section.10}
-\contentsline {section}{\numberline {11}Progress Summary}{3}{section.11}
-\contentsline {section}{\numberline {12}Milestone 4 (Feb 11)}{3}{section.12}
-\contentsline {section}{\numberline {13}Milestone 5 (Mar 18)}{3}{section.13}
-\contentsline {section}{\numberline {14}Milestone 6 (April 15)}{3}{section.14}
-\contentsline {section}{\numberline {15}Task Matrix for Milestone 4}{3}{section.15}
-\contentsline {section}{\numberline {16}Description of each planned task for Milestone 4}{3}{section.16}
-\contentsline {section}{\numberline {17}Approval from Faculty Sponsor}{3}{section.17}
-\contentsline {paragraph}{\tab "I have discussed with the team and approve this project plan. I will evaluate the progress and assign a grade fo reach of the three milestones"}{3}{section*.2}
+\contentsline {subsection}{\numberline {8.3}MTS}{2}{subsection.8.3}
+\contentsline {subsubsection}{\numberline {8.3.1}Development MTS}{2}{subsubsection.8.3.1}
+\contentsline {subsubsection}{\numberline {8.3.2}Current MTS}{2}{subsubsection.8.3.2}
+\contentsline {section}{\numberline {9}Technical Challenges}{2}{section.9}
+\contentsline {subsection}{\numberline {9.1}Compute Cluster}{2}{subsection.9.1}
+\contentsline {subsection}{\numberline {9.2}Computer Systems}{2}{subsection.9.2}
+\contentsline {subsection}{\numberline {9.3}MTS}{3}{subsection.9.3}
+\contentsline {subsubsection}{\numberline {9.3.1}Development MTS}{3}{subsubsection.9.3.1}
+\contentsline {subsubsection}{\numberline {9.3.2}Current MTS}{3}{subsubsection.9.3.2}
+\contentsline {section}{\numberline {10}Design}{4}{section.10}
+\contentsline {section}{\numberline {11}Progress Summary}{4}{section.11}
+\contentsline {section}{\numberline {12}Milestone 4 (Feb 11)}{4}{section.12}
+\contentsline {section}{\numberline {13}Milestone 5 (Mar 18)}{4}{section.13}
+\contentsline {section}{\numberline {14}Milestone 6 (April 15)}{4}{section.14}
+\contentsline {section}{\numberline {15}Task Matrix for Milestone 4}{4}{section.15}
+\contentsline {section}{\numberline {16}Description of each planned task for Milestone 4}{4}{section.16}
+\contentsline {section}{\numberline {17}Approval from Faculty Sponsor}{4}{section.17}
+\contentsline {paragraph}{\tab "I have discussed with the team and approve this project plan. I will evaluate the progress and assign a grade fo reach of the three milestones"}{4}{section*.2}

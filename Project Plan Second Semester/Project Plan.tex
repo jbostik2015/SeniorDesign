@@ -109,11 +109,22 @@ the group must overcome in order to conduct their research.
 \section{Novel Features/Functionalities}
 \subsection{Compute Cluster}
 \subsection{Computer Systems}
-\tab The computer systems in the HEP lab store important data locally on their systems that are crucial to the 
+\tab The computer systems in the HEP lab store important data locally on their systems that are crucial to their 
 \subsection{MTS}
+\subsubsection{Development MTS}
+\subsubsection{Current MTS}
+
 
 \section{Technical Challenges}
-
+\subsection{Compute Cluster}
+\subsection{Computer Systems}
+\tab The computer systems in the lab hold major data that is only stored locally on very specific computers. The issue here is that a lot of these computers do not have a backup of their data somewhere else which means that if there is a major hard drive failure lots of data will be lost. The ideal solution to this is to run all machines in RAID 1 with two hard drives in each machine, which will striped all data on one hard drive to another creating a backup. 
+\subsection{MTS}
+\subsubsection{Development MTS}
+\tab The development MTS currently has a major issue with the installation of AMORE
+\subsubsection{Current MTS}
+\tab The current MTS currently has a major issue where one of the FEC's is unusable due to bad firmware. Having one bad FEC renders the entire MTS useless due to how the software on the MTS computer currently works. \\
+\tab Another technical challenge with the current MTS is hardware wiring. The wiring of the MTS is disasterous, and makes it very difficult to unplug and and plug in other ports without losing track of cables, or putting cables in the wrong spot. This is because many cables are not labelled, and some cables are as long as 30 feet even when they are only connecting things roughly three to six feet away. 
 \section{Design}
 
 \section{Progress Summary}
