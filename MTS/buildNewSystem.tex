@@ -292,17 +292,30 @@ default. Once at the prompt, the available databases can be listed with {\tt
   show databases;}, the old AMORE database can be removed with {\tt drop
   database AMORE;}, and the prompt can be exited with {\tt quit}.
 
-\qq The issue now is that {\tt amoreUpdateDB.tcl} is in the wrong place.
+\qq The issue now is that {\tt amoreUpdateDB.tcl} is in the wrong place. It
+complains that {\tt /opt/amore/bin/amoreMysqlSetup} could not find {\tt
+  /bin/amoreUpdateDB.tcl}, which is fine because it's in {\tt
+  /opt/amore/bin/amoreMysqlSetup}. In {\tt /opt/amore/bin/amoreMysqlSetup}, the
+path to {\tt amoreUpdateDB.tcl} is described as {\tt
+  \$AMORE/bin/amoreUpdateDB.tcl}. Since {\tt \$AMORE} is blank, I've run {\tt
+  export AMORE=/opt/amore}. After dropping the old AMORE database from MySQL,
+{\tt amoreMysqlSetup} will run successfully.
 
 \qq When we downgraded ROOT, we also had to reinstall all of its dependencies
 and rebuild it. The rebuild process was giving us some issues because it cannot
 be built in the installation directory; it needs to be first placed in the {\tt
   builddir} directory, then built. Now that ROOT is installed, AMORE may be set
-up again as normal with {\tt amoreMysqlSetup} and {\tt newAmoreSite}.
+up again as normal with {\tt amoreMysqlSetup} and {\tt newAmoreSite} (NOTE: if
+not running {\tt newAmoreSite} as root, it must be run with {\tt sudo env
+  ``PATH=\$PATH'' newAmoreSite} in order for the environment to be properly
+preserved ({\tt sudo -E newAmoreSite} was ineffective)).
+
+\qq {\tt newAmoreSite}, however, returns a syntax error when run, {\tt
+  /opt/amore/bin/newAmoreSite: line 57: syntax error: unexpected end of file}. 
 
 \qq When {\tt amore} is run, however, after several ROOT warnings about a bunch
 of classes already existing in {\tt TClassTable}, it says {\tt terminate called
-  after throwing an instance of 'std::runtime_error'}, then {\tt what()}, the
+  after throwing an instance of 'std::runtime\_error'}, then {\tt what()}, the
 AMORE function that is supposed to print out what caused an error, shows a
 ``Usage'' dialogue for some command; it just prints out ``Usage:'' followed by
 some flags. Evidently, the issue is that some command
@@ -316,6 +329,12 @@ to {\tt /opt/amore} and grepped for a keyword in one of the flag definitions,
 binary files as text files, the {\tt -a} flay may be used, {\tt grep -aR
   ``<LIBSUFFIX>'' *}. Digging into those binaries didn't help a whole lot; I
 just found the ``Usage'' text on its own without any context.
+
+\qq Some progress has been made! Joseph has reinstalled a slightly newer version
+of ROOT, v5.34/38, and the strange ROOT errors from before are all gone! ROOT
+starts normally! Now let's see how AMORE'll play with the new ROOT.
+
+\qq 
 
 %-----------END SETUP-----------
 
