@@ -310,9 +310,6 @@ not running {\tt newAmoreSite} as root, it must be run with {\tt sudo env
   ``PATH=\$PATH'' newAmoreSite} in order for the environment to be properly
 preserved ({\tt sudo -E newAmoreSite} was ineffective)).
 
-\qq {\tt newAmoreSite}, however, returns a syntax error when run, {\tt
-  /opt/amore/bin/newAmoreSite: line 57: syntax error: unexpected end of file}. 
-
 \qq When {\tt amore} is run, however, after several ROOT warnings about a bunch
 of classes already existing in {\tt TClassTable}, it says {\tt terminate called
   after throwing an instance of 'std::runtime\_error'}, then {\tt what()}, the
@@ -334,7 +331,21 @@ just found the ``Usage'' text on its own without any context.
 of ROOT, v5.34/38, and the strange ROOT errors from before are all gone! ROOT
 starts normally! Now let's see how AMORE'll play with the new ROOT.
 
-\qq 
+\qq When redoing the {\tt amoreMysqlSetup} stuff, we ran into some issues. {\tt
+  newAmoreSite} returns a syntax error when run, {\tt
+  /opt/amore/bin/newAmoreSite: line 57: syntax error: unexpected end of file}.
+I'm going to reinstall AMORE.
+
+\qq After reinstalling ROOT, we tried to run AMORE, and it failed because it
+couldn't find {\tt libCore.so.5.34}. The file that contains the path to the ROOT
+libraries is {\tt /etc/ld.so.conf.d/root-x86_64.conf}; it contained {\tt
+  /opt/root/lib}. Unfortunately, no libraries are there. We created another file
+in that same directory, {\tt /etc/ld/so/conf.d/root.conf}, and put the new path
+to the libraries (the old library paths were messed up after reinstall): {\tt
+  /opt/root/builddir/lib}. To save this change, run {\tt ldconfig}.
+
+\qq Turns out we still had to build ROOT! We navigated to the ROOT build
+directory and followed the README for building.
 
 %-----------END SETUP-----------
 
