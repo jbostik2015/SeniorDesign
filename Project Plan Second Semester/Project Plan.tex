@@ -102,6 +102,20 @@ some time, and these issues have been hindering the progress of
 the group. The goal of the project is to repair and improve the
 group’s resources to reduce the number of unnecessary obstacles
 the group must overcome in order to conduct their research.
+<<<<<<< HEAD
+\section{Approach}
+\subsection{Compute Cluster}
+\subsection{Computer Systems}
+\subsection{Muon Tomography Station (MTS)}
+
+\section{Novel Features/Functionalities}
+\subsection{Compute Cluster}
+\subsection{Computer Systems}
+\tab The computer systems in the HEP lab store important data locally on their systems that are crucial to their 
+\subsection{MTS}
+\subsubsection{Development MTS}
+\subsubsection{Current MTS}
+=======
 
 \section{Approach}
 	\subsection{Compute Cluster}
@@ -151,10 +165,21 @@ The creation of a new data taking workflow for the MTS that
 includes troubleshooting capabilities so that data taking issues can
 more quickly be diagnosed.
 
+>>>>>>> 5ee1e0b4f345f7e0bfaed17b7ebdccdfd222fc61
 
 
 \section{Technical Challenges}
 \subsection{Compute Cluster}
+<<<<<<< HEAD
+\subsection{Computer Systems}
+\tab The computer systems in the lab hold major data that is only stored locally on very specific computers. The issue here is that a lot of these computers do not have a backup of their data somewhere else which means that if there is a major hard drive failure lots of data will be lost. The ideal solution to this is to run all machines in RAID 1 with two hard drives in each machine, which will striped all data on one hard drive to another creating a backup. 
+\subsection{MTS}
+\subsubsection{Development MTS}
+\tab The development MTS currently has a major issue with the installation of AMORE
+\subsubsection{Current MTS}
+\tab The current MTS currently has a major issue where one of the FEC's is unusable due to bad firmware. Having one bad FEC renders the entire MTS useless due to how the software on the MTS computer currently works. \\
+\tab Another technical challenge with the current MTS is hardware wiring. The wiring of the MTS is disasterous, and makes it very difficult to unplug and and plug in other ports without losing track of cables, or putting cables in the wrong spot. This is because many cables are not labelled, and some cables are as long as 30 feet even when they are only connecting things roughly three to six feet away. 
+=======
 \tab The computer cluster has recently had an operating, ROCKS, installed on the system. Although ROCKS is installed on the CE (Computing Element) of the cluster it has yet to also integrate the Storage Element (SE) and the Network Assisted Storage (NAS). After this is getting HTCondor installed, and connecting to the Open Science Grid (OSG) so that it can take jobs and complete them. 
 \subsection{Computer Systems}
 \tab The computer systems in the lab hold major data that is only stored locally on very specific computers. The issue here is that a lot of these computers do not have a backup of their data somewhere else which means that if there is a major hard drive failure lots of data will be lost. The ideal solution to this is to run all machines in RAID 1 with two hard drives in each machine, which will striped all data on one hard drive to another creating a backup. 
@@ -165,6 +190,7 @@ more quickly be diagnosed.
 \subsubsection{Development MTS}
 \tab The development MTS has been having a few software issues, specifically with running AMORE with the DATE software. This is a challenge as there is not much documentation as to the process of installing these softwares with the new supported operating system of CERN: CentOS 7.
  
+>>>>>>> 5ee1e0b4f345f7e0bfaed17b7ebdccdfd222fc61
 \section{Design}
 \subsection{Compute Cluster}
 \includegraphics{Cluster_Design_Image.png}
@@ -204,6 +230,12 @@ more quickly be diagnosed.
 
 
 \section{Milestone 4 (Feb 11)}
+<<<<<<< HEAD
+
+\section{Milestone 5 (Mar 18)}
+
+\section{Milestone 6 (April 15)}
+=======
 \begin{itemize}
 	\item Integrate all parts of the cluster together
 	\item Rewire the current MTS and clean up the cables 
@@ -224,6 +256,7 @@ more quickly be diagnosed.
 	\item Create a Showcase video showing our progress
 	\item Finalize progress with Advisor
 \end{itemize}
+>>>>>>> 5ee1e0b4f345f7e0bfaed17b7ebdccdfd222fc61
 
 \section{Task Matrix for Milestone 4}
 \begin{tabular}{| c | c | c | c |}
@@ -242,6 +275,8 @@ more quickly be diagnosed.
 \end{tabular}
 
 
+<<<<<<< HEAD
+=======
 \section{Description of each planned task for Milestone 4}
 \subsection{Compute Cluster}
 \tab Integrate each part of compute cluster with ROCKS so that they can all communicate with each other.
@@ -253,6 +288,7 @@ more quickly be diagnosed.
 \subsubsection{Development MTS}
 \tab The version of AMORE on the computer currently is not supported and working with the DAQ/DATE and is having some issues working. In order to use the software we have to find out what the issue is, and fix AMORE so that it will work with DATE/DAQ to read in data. 
 
+>>>>>>> 5ee1e0b4f345f7e0bfaed17b7ebdccdfd222fc61
 \section{Approval from Faculty Sponsor}
 \paragraph{\tab "I have discussed with the team and approve this project plan. I will evaluate the progress and assign a grade fo reach of the three milestones"}
 \doubleSignature{Signature}{Date}
