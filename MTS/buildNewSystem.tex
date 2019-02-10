@@ -338,14 +338,27 @@ I'm going to reinstall AMORE.
 
 \qq After reinstalling ROOT, we tried to run AMORE, and it failed because it
 couldn't find {\tt libCore.so.5.34}. The file that contains the path to the ROOT
-libraries is {\tt /etc/ld.so.conf.d/root-x86_64.conf}; it contained {\tt
+libraries is {\tt /etc/ld.so.conf.d/root-x86\_64.conf}; it contained {\tt
   /opt/root/lib}. Unfortunately, no libraries are there. We created another file
 in that same directory, {\tt /etc/ld/so/conf.d/root.conf}, and put the new path
 to the libraries (the old library paths were messed up after reinstall): {\tt
   /opt/root/builddir/lib}. To save this change, run {\tt ldconfig}.
 
 \qq Turns out we still had to build ROOT! We navigated to the ROOT build
-directory and followed the README for building.
+directory and followed the README for building. ROOT's all good to go, now let's
+see about AMORE. 
+
+\qq I'm reinstalling it. To uninstall AMORE, {\tt yum remove amore.x86\_64}, and
+to install it again, {\tt yum install amore}. Hmm, when it tried to get the
+package from the SLC6 repository, it encountered an HTTP 403 response. {\tt yum}
+also gave us an error code of 14, and an
+\href{https://wiki.centos.org/yum-errors}{\underline{article}} providing some
+troubleshooting steps. The article suggests clearing the cache with {\tt yum
+  clean all} followed by {\tt rm -rf /var/cache/yum*}.
+
+\qq Now {\tt yum} just straight up fails; it had been relying on that cached
+data to go through in the first place. It's complaining about repository
+configuration, so let's see what's going on with that.
 
 %-----------END SETUP-----------
 
