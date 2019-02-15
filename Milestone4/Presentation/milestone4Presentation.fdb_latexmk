@@ -1,9 +1,9 @@
 # Fdb version 3
-["pdflatex"] 1550260148 "milestone4Presentation.tex" "milestone4Presentation.pdf" "milestone4Presentation" 1550260149
+["pdflatex"] 1550260322 "milestone4Presentation.tex" "milestone4Presentation.pdf" "milestone4Presentation" 1550260323
   "../../presentationPream.tex" 1550259683 330 3123a0d5502777e0d5036cc8285ef7c9 ""
   "./AMOREGoneEmail.png" 1550248665 75742 4b3bcf82014bdbd1b04201e48e2d5c08 ""
   "./StefanoEmail.png" 1550248695 30324 694b380dc7a0870cb9473fcb488e39d6 ""
-  "./milestone4Presentation.out" 1550260149 429 eae6a6d88a955a945afd56a173fd40de ""
+  "./milestone4Presentation.out" 1550260323 429 eae6a6d88a955a945afd56a173fd40de ""
   "./mtsCables.png" 1550246415 2440145 69838648ad708a5e66216fd0fadd6fe1 ""
   "/opt/local/etc/texmf/texmf.cnf" 1526053094 30503 9a61e6893861ec0a56455c8e9c9c514e ""
   "/opt/local/share/texmf-texlive/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1467164711 1004 54797486969f23fa377b128694d548df ""
@@ -187,10 +187,10 @@
   "/opt/local/var/db/texmf/web2c/pdftex/pdflatex.fmt" 1526053119 723151 13059fc6e2f6e9a067c035a039dadbdb ""
   "AMOREGoneEmail.png" 1550248665 75742 4b3bcf82014bdbd1b04201e48e2d5c08 ""
   "StefanoEmail.png" 1550248695 30324 694b380dc7a0870cb9473fcb488e39d6 ""
-  "milestone4Presentation.aux" 1550260149 4119 41cfc0b7f017760bfe1f8662630b4872 ""
-  "milestone4Presentation.nav" 1550260149 2154 d86f33bac90fdb989bd0be2631324c58 ""
-  "milestone4Presentation.out" 1550260149 429 eae6a6d88a955a945afd56a173fd40de ""
-  "milestone4Presentation.tex" 1550260148 5375 bb27d1dde95364dea15bc3422599cec1 ""
+  "milestone4Presentation.aux" 1550260323 4119 41cfc0b7f017760bfe1f8662630b4872 ""
+  "milestone4Presentation.nav" 1550260323 2154 d86f33bac90fdb989bd0be2631324c58 ""
+  "milestone4Presentation.out" 1550260323 429 eae6a6d88a955a945afd56a173fd40de ""
+  "milestone4Presentation.tex" 1550260283 5543 b7482798154fd86b1061f4540f55ad4e ""
   "mtsCables.png" 1550246415 2440145 69838648ad708a5e66216fd0fadd6fe1 ""
   (generated)
   "milestone4Presentation.pdf"
