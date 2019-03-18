@@ -139,8 +139,24 @@
 
 \subsection{Development MTS Computer Progress}
 
-\tab We have been provided with the source repository for AMORE! We have cloned
-the repository onto the development MTS machine and tried to make it. 
+\tab We've run into quite a few problems installing AMORE on the development MTS.
+	As we discussed last milestone, AMORE is no longer supported by CERN, and
+	the repository containing AMORE has been taken down since last semester. As
+	such, we contacted somebody who worked in the lab last year, and they turned
+	out to have the source code for AMORE. However, all documentation on AMORE states
+	that this is not the recommended way of building AMORE, and so there is very
+	little documentation on the process for building AMORE via its source. After some
+	research, we found out the process for building AMORE via its source and 
+	implemented it. however a makefile in /usr/local/etc named Makefile.arch is 
+	required, and we have been unable to find the Makefile. After we got 
+	stuck here, we tried to sync the version of AMORE that we successfully built 
+	(but was unable to run) with our "new" version of root 5.34.38. 
+	After exploring all the issues with the old version of AMORE and the "new" 
+	version of root, we tried to solve the run  time errors we were having 
+	by manually renaming a few of the library so that AMORE
+	would recognize them, only to run into some more issues with variable names 
+	not being recognized between our "new" version of root and our old version
+	of AMORE.
 
 \subsection{Computing Cluster}
 
@@ -154,7 +170,8 @@ the repository onto the development MTS machine and tried to make it.
 \subsection{Josef Bostik}
 
 \begin{itemize}
-\item 
+\item Reinstallation of ROOT on MTS Development Machine
+\item Building root on MTS Development Machine
 \end{itemize}
 
 \subsection{Eric Pereira}
@@ -182,7 +199,11 @@ the repository onto the development MTS machine and tried to make it.
 \tab 
 
 \subsection{Development MTS Computer}
-
+	As it stands we are somewhat stuck with the development MTS. We may be able to 
+	find a way to create the makefile for the source of root, or we may need to 
+	find another method of building AMORE. As soon as AMORE is built, we will write
+	a script to pass data between AMORE, DATE, and ROOT to create an intuitive usage
+	process for the MTS.
 \tab 
 
 \subsection{Computing Cluster}
