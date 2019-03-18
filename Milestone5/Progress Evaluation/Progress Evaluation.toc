@@ -11,7 +11,7 @@
 \contentsline {subsection}{\numberline {7.4}GEM Machines}{2}{subsection.7.4}
 \contentsline {section}{\numberline {8}Parts Worked On}{2}{section.8}
 \contentsline {subsection}{\numberline {8.1}Josef Bostik}{2}{subsection.8.1}
-\contentsline {subsection}{\numberline {8.2}Eric Pereira}{2}{subsection.8.2}
+\contentsline {subsection}{\numberline {8.2}Eric Pereira}{3}{subsection.8.2}
 \contentsline {subsection}{\numberline {8.3}Ryan Wojtyla}{3}{subsection.8.3}
 \contentsline {section}{\numberline {9}Task Matrix - Next Milestone}{3}{section.9}
 \contentsline {section}{\numberline {10}Discussion - Next Milestone}{3}{section.10}

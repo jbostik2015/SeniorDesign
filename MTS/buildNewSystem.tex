@@ -360,6 +360,53 @@ troubleshooting steps. The article suggests clearing the cache with {\tt yum
 data to go through in the first place. It's complaining about repository
 configuration, so let's see what's going on with that.
 
+\qq AMORE has been decommissioned by ALICE, but Stefano sent us a copy of it's
+source on github (\url{https://github.com/stefanocolafranceschi/amoreSRS}). I
+cloned the repo, so now we've got it. Time to build it on the MTS dev machine!
+
+\qq There's a {\tt Makefile} in the repository's root directory, so I ran {\tt
+  make} to use it. It's complaining that there's no {\tt
+  /usr/local/etc/Makefile.arch}, so let's investigate that. When the make file
+in the root directory of the repo is run, it immediately travels to the {\tt
+  src} directory and runs the make file there. The first line in {\tt
+  src/Makefile} includes {\tt Makefile.inc} in the same directory, whose first
+action is to include {\tt \$(shell root-config
+  --prefix)/etc/Makefile.arch}. {\tt root-config --prefix} outputs {\tt
+  /usr/local}, which is where it's getting {\tt /usr/local/etc/Makefile.arch}
+from. The entire {\tt /usr/local/etc} directory, however, is empty! It's also
+empty on the old MTS machine, so that's interesting. 
+
+\qq There ARE {\tt Makefile.arch}s scattered around the MTS development machine,
+though! The one that appears to be the most interesting is {\tt
+  /etc/root/Makefile.arch}, a self-described ``Makefile containing platform
+dependencies for ROOT based projects.''. Since AMORE depends on ROOT, this looks
+like what we need. {\tt /etc/root} appears to contain all the ROOT configuration
+rather than {\tt /usr/local}, so I'm gonna set the ``root-config'' prefix to
+{\tt /etc/root}. The current prefix configuration can be viewed with {\tt
+  root-config --config}.
+
+\qq Because {\tt root-config} wasn't cooperating when trying to change the
+prefix via {\tt root-config --prefix=/etc/root}, I found the source code, {\tt
+  /usr/local/bin/root-config}, and changed the prefix setting found in the {\tt
+  configargs} variable. That alone, however, does not solve the problem; the
+configuration is not saved.
+
+\qq I checked to see how often {\tt root-config --prefix} was used in building
+AMORE. It's only used once in that one file, so I just manually entered the
+correct path. The {\tt make} went much further this time, but it still
+failed. This time it's complaining that {\tt TDATEEventParser.h} doesn't
+exist. That file is included by {\tt [root of AMORE
+  repo]/src/publisher/SRSPublisher.h}. A {\tt locate TDATEEventParser.h} didn't
+turn up anything.  
+
+\qq The original MTS does, however, have {\tt
+  /opt/amore/include/amore/TDATEEventParser.h}. I used {\tt netcat} to throw the
+MTS's file into the same directory on the MTS development machine and tried {\tt
+  make} again (NOTE: All TCP connections other than at port 22 are blocked by
+default, so {\tt iptables} must be used to free up a port). Now we have
+different errors in {\tt SRSPublisher.h}; they are all complaining that
+``Session'' does not have a type.
+
 %-----------END SETUP-----------
 
 \end{document}
